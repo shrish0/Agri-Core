@@ -2,7 +2,7 @@
 .env
 
 # Ignore HDF5 files
-*.h5
+
 
 # Ignore Pickle files
 *.pkl
