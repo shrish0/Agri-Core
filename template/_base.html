@@ -1,0 +1,455 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <!-- basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <title>Shrishti</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <!-- <meta http-equiv="refresh" content="15"> -->
+   <meta name="author" content="">
+   <!-- bootstrap css -->
+   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+   <!-- style css -->
+   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   <!-- Responsive-->
+   <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+   <!-- fevicon -->
+   <link rel="icon" href="{% static 'images/fevicon.png' %}" type="image/gif" />
+   <!-- Scrollbar Custom CSS -->
+   <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
+   <link rel="stylesheet" href="{% static 'css/w3.css' %}">
+   <!-- Tweaks for older IEs-->
+   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+      media="screen">
+
+   <!-- google font -->
+   <!-- google fonts -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Playpen+Sans:wght@300&family=Poppins:wght@500;800&family=Roboto:wght@500&display=swap"
+      rel="stylesheet">
+   <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+
+   <style>
+      /* Dropdown Button */
+
+
+      /* The container <div> - needed to position the dropdown content */
+      .dropdown {
+         position: relative;
+         display: inline-block;
+         background-color: rgb(220, 23, 23);
+      }
+
+      /* Dropdown Content (Hidden by Default) */
+      .dropdown-content {
+         display: none;
+         position: absolute;
+         min-width: 160px;
+         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+         z-index: 1;
+         background-color: black;
+      }
+
+      /* Links inside the dropdown */
+      .dropdown-content a {
+         color: rgb(17, 16, 16);
+         padding: 12px 16px;
+         text-decoration: none;
+         display: block;
+      }
+
+
+      .w3-sidebar::-webkit-scrollbar {
+         width: 0;
+         /* Remove scrollbar space */
+         background: transparent;
+         /* Optional: make scrollbar track transparent */
+      }
+
+
+      /* Change color of dropdown links on hover */
+      .dropdown-content a:hover {
+         background-color: black;
+      }
+
+      /* Show the dropdown menu on hover */
+      .dropdown:hover .dropdown-content {
+         display: block;
+      }
+
+      /* Change the background color of the dropdown button when the dropdown content is shown */
+      .dropdown:hover .dropbtn {
+         background-color: #3e8e41;
+      }
+   </style>
+</head>
+<!-- body -->
+
+<body class="main-layout">
+   <!-- loader  -->
+   <div class="loader_bg">
+      <div class="loader"><img src="{% static 'images/loading.gif' %}" alt="#" /></div>
+   </div>
+   <!-- end loader -->
+   <!-- header -->
+
+   <!-- Sidebar -->
+   <div class="w3-sidebar w3-bar-block" id="mySidebar"
+      style="display:none; flex-direction: column; align-items: center; background-color:black; color:azure; font:2em;  overflow:auto; z-index:10000  ">
+      <button onclick="w3_close()" class="w3-bar-item w3-button w3-large">Close &times;</button>
+      {% if user.is_authenticated %}
+      <a class="w3-bar-item w3-button " style="text-align: center;color:gold"
+         href="http://{{DJANGO_SERVER_IP}}/profile.html">Hello,{{ user}}</a>
+      {% endif %}
+
+      <a class="w3-bar-item w3-button home" style="text-align: center;" href="http://{{DJANGO_SERVER_IP}}/">Home</a>
+      <a class="w3-bar-item w3-button guide" style="text-align: center;"
+         href="http://{{DJANGO_SERVER_IP}}/blog.html">guide</a>
+      <a class="w3-bar-item w3-button weather" style="text-align: center;"
+         href="http://{{DJANGO_SERVER_IP}}/weather.html">weather forecast </a>
+      <a class="w3-bar-item w3-button tourism" style="text-align: center;"
+         href="http://{{DJANGO_SERVER_IP}}/tourism">Agri Tourism</a>
+      <a class="w3-bar-item w3-button weather" style="text-align: center;"
+         href="http://{{DJANGO_SERVER_IP}}/products.html">Store</a>
+      <a class="w3-bar-item w3-button weather" style="text-align: center;"
+         href="http://{{DJANGO_SERVER_IP}}/counselling.html">Take a Plan</a>
+      <a class="w3-bar-item w3-button daily" style="text-align: center;"
+         href="http://{{DJANGO_SERVER_IP}}/daily_news.html">Daily News </a>
+      <a class="w3-bar-item w3-button plant" style="text-align: center;"
+         href="http://{{DJANGO_SERVER_IP}}/plant-disease-detection.html">Plant Disease Detection</a>
+      <a class="w3-bar-item w3-button community" style="text-align: center;"
+         href="http://{{DJANGO_SERVER_IP}}/chat">Community</a>
+      <a class="w3-bar-item w3-button policy" style="text-align: center;"
+         href="http://{{DJANGO_SERVER_IP}}/policy.html">Policy</a>
+      <a class="w3-bar-item w3-button faq" style="text-align: center;"
+         href="http://{{DJANGO_SERVER_IP}}/FaQ.html">FaQ</a>
+      <a class="w3-bar-item w3-button about" style="text-align: center;"
+         href="http://{{DJANGO_SERVER_IP}}/about.html">About Us</a>
+      <a class="w3-bar-item w3-button contact" style="text-align: center;" onclick="scrollToBottom()">Contact Us</a>
+      {% if user.is_authenticated %}
+      <a class="w3-bar-item w3-button contact" style="text-align: center;"
+         href="http://{{DJANGO_SERVER_IP}}/account/logout.html">Log Out</a>
+      {% else %}
+      <a class="w3-bar-item w3-button contact" style="text-align: center;"
+         href="http://{{DJANGO_SERVER_IP}}/account/login.html">Log in</a>
+      <a class="w3-bar-item w3-button contact" style="text-align: center;"
+         href="http://{{DJANGO_SERVER_IP}}/account/signin.html">Sign up</a>
+      {% endif %}
+   </div>
+   <header>
+      <!-- header inner -->
+      <div class="header" style="height: 121px;">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-xl-1 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                  <div class="full">
+                     <div class="center-desk">
+                        <div class="logo">
+
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <nav class="navigation navbar navbar-expand-md navbar-dark " style="position: absolute; right:5px">
+                  <button class="navbar-toggler" type="button" onclick="w3_open()" id="more1">
+                     <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarsExample04">
+                     <ul class="navbar-nav mr-auto">
+                        {% if user.is_authenticated %} <li class="nav-item ">
+                           <a class="nav-link active" href="http://{{DJANGO_SERVER_IP}}/profile.html">Hello , {{user}}</a>
+                           
+                        </li>
+                        {% endif %}
+                        <li class="nav-item ">
+                           <a class="nav-link" href="http://{{DJANGO_SERVER_IP}}/index.html"> Home </a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="http://{{DJANGO_SERVER_IP}}/plant-disease-detection.html">Disease
+                              Detector
+
+                           </a>
+                        </li>
+                        {% if user.is_authenticated %} <li class="nav-item">
+                           <a class="nav-link" href="http://{{DJANGO_SERVER_IP}}/chat">Community</a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item">
+
+                           <button class=" nav-link " onclick="w3_open()" style="background-color: transparent;"
+                              id="more">More ☰</button>
+                        </li>
+                     </ul>
+                  </div>
+               </nav>
+
+            </div>
+         </div>
+      </div>
+
+      {% block content %}
+
+
+      {% endblock content %}
+
+      <footer id="contact">
+         <div class="footer" style="padding: 0px;">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-4">
+                     <div class="titlepage">
+                        <h2>Contact Us</h2>
+                     </div>
+                  </div>
+                  <div class="col-md-12">
+                     <form id="request" action="feedback1" method="post" class="main_form">
+                        {% csrf_token %}
+                        {% if user.is_authenticated %}
+                        <div class="row">
+                           <div class="col-md-3 ">
+                              <input class="contactus" placeholder="Full Name" type="type" name="Full Name"
+                                 value={{user.username}}>
+                              <input class="contactus" type="hidden" name="page" value="index">
+                           </div>
+                           <div class="col-md-3">
+                              <input class="contactus" placeholder="Email" type="type" name="Email"
+                                 value={{user.email}}>
+                           </div>
+                           <div class="col-md-3">
+                              <input class="contactus" placeholder="Phone Number" type="type" name="Phone Number"
+                                 value={{user.phone}}>
+                           </div>
+
+                           <div class="col-md-8">
+                              <textarea class="contactus1" placeholder="Message" type="type" name="message"> </textarea>
+                           </div>
+
+                           <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                              <input class="send_btn" type="submit" value="Submit">
+                           </div>
+                           <br>
+                           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                              <ul class="social_icon">
+                                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                 <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                 <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                                 <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                              </ul>
+                              <!-- <input type="hidden" value="index" name="page" disabled> -->
+                           </div>
+                        </div>
+                        {% else %}
+                        <div class="row">
+                           <div class="col-md-3 ">
+                              <input class="contactus" placeholder="Full Name" type="type" name="Full Name">
+                              <input class="contactus" type="hidden" name="page" value="index">
+                           </div>
+                           <div class="col-md-3">
+                              <input class="contactus" placeholder="Email" type="type" name="Email">
+                           </div>
+                           <div class="col-md-3">
+                              <input class="contactus" placeholder="Phone Number" type="type" name="Phone Number">
+                           </div>
+                           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                              <ul class="social_icon">
+                                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                 <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                 <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
+                                 <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                              </ul>
+                              <!-- <input type="hidden" value="index" name="page" disabled> -->
+                           </div>
+                           <div class="col-md-8">
+                              <textarea class="contactus1" placeholder="Message" type="type"
+                                 name="message">Message </textarea>
+                           </div>
+                           <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                              <input class="send_btn" type="submit" value="Submit">
+                           </div>
+                        </div>
+                        {% endif %}
+                     </form>
+                  </div>
+                  <div class="col-md-3 border_right">
+                     <ul class="location_icon">
+                        <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a> Locatins</li>
+                        <li><a href="#"><i class="fa fa-volume-control-phone" aria-hidden="true"></i></a> +91 9910716997
+                        </li>
+                        <li><a href="mailto:shrishgupta1234@gmail.com"><i class="fa fa-envelope" aria-hidden="true"></i>
+                              &nbsp;<span style="font-size: 1rem;"> dharti@gmail.com</span></a></li>
+                     </ul>
+                  </div>
+                  <div class="col-md-3 border_right">
+                     <h3>Useful Link</h3>
+                     <ul class="link">
+                        <li><a href="https://agricoop.gov.in/" target="_blank">Minister of Agriculture and Farmer </a>
+                        </li>
+                     </ul>
+                  </div>
+                  <div class="col-md-3 border_right">
+                     <h3>Menus</h3>
+                     <ul class="link">
+                        <li><a href="http://{{DJANGO_SERVER_IP}}/index.html">Home</a></li>
+                        <li><a href="http://{{DJANGO_SERVER_IP}}/about.html">About</a></li>
+                        <li><a href="http://{{DJANGO_SERVER_IP}}/products.html">Products</a></li>
+                        <li><a href="http://{{DJANGO_SERVER_IP}}/blog.html">Blog</a></li>
+                        <li><a href="http://{{DJANGO_SERVER_IP}}/contact.html">Contact</a></li>
+                     </ul>
+                  </div>
+                  <div class="col-md-3">
+                     <form action="news" method="post" class="bottom_form">
+                        {% csrf_token %}
+                        <h3>Newsletter</h3>
+                        <input class="contactus" type="hidden" name="page" value="index">
+                        {% if user.is_authenticated %}
+                        <input class="enter" placeholder="Enter your email" type="hidden" name="Email"
+                           value={{user.email}}>
+                        <button class="sub_btn">subscribe</button>
+                        {% else %}
+                        <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
+                        <button class="sub_btn">subscribe</button>
+                        {% endif %}
+                     </form>
+                  </div>
+               </div>
+            </div>
+            <div class="copyright" style="padding: 0px;">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <p style="color: black;">Jai jawan Jai kisan</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/popper.min.js' %}"></script>
+      <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+      <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
+      <!-- sidebar -->
+      <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+      <script src="{% static 'js/custom.js' %}"></script>
+
+      <script>
+         function w3_open() {
+            document.getElementById("mySidebar").style.width = "390px";
+            document.getElementById("mySidebar").style.display = "flex";
+            document.getElementById("more").setAttribute("onclick", "w3_close()");
+            document.getElementById("more").innerText = "×";
+            console.log(getElementById("more"))
+         }
+
+         function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("more").setAttribute("onclick", "w3_open()");
+            document.getElementById("more").innerText = "More ☰";
+         }
+
+         function scrollToBottom() {
+            window.scrollTo(0, document.body.scrollHeight);
+         }
+
+         $(document).ready(function () {
+            $('#request').submit(function (e) {
+               e.preventDefault(); // Prevent the form from submitting normally
+               var form = $(this);
+               $.ajax({
+                  type: form.attr('method'),
+                  url: form.attr('action'),
+                  data: form.serialize(), // Serialize the form data
+                  success: function (response) {
+                     // Handle success
+                     console.log(response.message); // Log success message
+                     // Optionally, clear the form fields or display a success message to the user
+                  },
+                  error: function (xhr, status, error) {
+                     // Handle errors
+                     console.error(xhr.responseText);
+                     // Optionally, display an error message to the user
+                  }
+               });
+            });
+         });
+         var djangoServerIp = "{{ DJANGO_SERVER_IP }}";
+         console.log(djangoServerIp);
+
+         $(document).ready(function () {
+            $('#request').submit(function (e) {
+               e.preventDefault(); // Prevent the form from submitting normally
+               var form = $(this);
+               $.ajax({
+                  type: form.attr('method'),
+                  url: form.attr('action'),
+                  data: form.serialize(), // Serialize the form data
+                  success: function (response) {
+                     // Handle success
+                     alert('Form submitted successfully!'); // Show alert box
+                     console.log(response.message); // Log success message
+                     // Clear the message inside the textarea
+                     $('textarea[name="message"]').val('');
+                     // Optionally, clear the form fields or display a success message to the user
+                  },
+                  error: function (xhr, status, error) {
+                     // Handle errors
+                     console.error(xhr.responseText);
+                     // Optionally, display an error message to the user
+                  }
+               });
+            });
+         });
+
+         $(document).ready(function () {
+            $('.bottom_form').submit(function (e) {
+               e.preventDefault(); // Prevent the form from submitting normally
+               var form = $(this);
+               $.ajax({
+                  type: form.attr('method'),
+                  url: form.attr('action'),
+                  data: form.serialize(), // Serialize the form data
+                  success: function (response) {
+                     // Handle success
+                     alert('Subscription successful!'); // Show alert box
+                     console.log(response.message); // Log success message
+                     // Clear the email input field
+                     $('.bottom_form input[name="Enter your email"]').val('');
+                     // Optionally, display a success message to the user
+                  },
+                  error: function (xhr, status, error) {
+                     // Handle errors
+                     console.error(xhr.responseText);
+                     // Optionally, display an error message to the user
+                  }
+               });
+            });
+         });
+
+
+      </script>
+
+      <!-- Include jQuery library -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+</body>
+
+</html>

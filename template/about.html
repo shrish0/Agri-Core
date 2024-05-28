@@ -1,0 +1,219 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>policy</title>
+<style>
+    /*Button*/
+    .card-button {
+     border: 1px solid #252525;
+     display: flex;
+     padding: .3em;
+     cursor: pointer;
+     border-radius: 50px;
+     transition: .3s ease-in-out;
+    }
+    
+    /*Hover*/
+    .card-img:hover {
+     transform: translateY(-25%);
+     box-shadow: rgba(226, 196, 63, 0.25) 0px 13px 47px -5px, rgba(180, 71, 71, 0.3) 0px 8px 16px -8px;
+    }
+    
+    .card-button:hover {
+     border: 1px solid #ffcaa6;
+     background-color: #ffcaa6;
+    }
+    
+    
+    .card {
+     
+     /* background: #07182E; */
+     background-color: #ba9d2c;
+      position: relative;
+      display: flex;
+      place-content: center;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 20px;
+      margin-left: 15px;
+      margin-top: 15px;
+      text-align: left; 
+      padding: 5px;
+      padding-bottom: 15px;
+      
+      width: 85vw;
+      height: auto;
+    }
+    
+    .card form p {
+      z-index: 1;
+      color: dimgray;
+      font-size: 1.1em;
+      padding-left: 15px;
+    }
+    
+    .card form img {
+      min-width: 100%;
+      height: 200px;
+      z-index: 1;
+      border-radius: 25px;
+    }
+    
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      width: 100px;
+      background-image: linear-gradient(180deg, rgb(0, 183, 255), rgb(255, 48, 255));
+      height: 130%;
+      animation: rotBGimg 3s linear infinite;
+      transition: all 0.2s linear;
+    }
+    
+    .card>p{
+      text-transform: uppercase;
+      z-index: 1;
+    }
+
+    .card>ul{
+      text-transform: uppercase;
+      z-index: 1;
+      list-style: disc;
+      padding: 10px;
+      text-align: left;
+      padding-left: 31px;
+    }
+
+    .policy{
+      color:gold
+    }
+
+
+.card>ul>li {
+    margin-bottom: 5px; /* Add some bottom margin to separate list items */
+    position: relative; /* Position the list item */
+}
+
+    .card>h2{
+      text-transform: uppercase;
+      z-index: 1;
+      margin: 15px;
+    }
+    
+    .card>img{
+      height: 150px;
+      margin-top: 20px;
+      width:98vw;
+      overflow: hidden;
+    }
+    /* Define a keyframes animation for the glow effect */
+    @keyframes glow-up {
+      0% {
+          box-shadow: 0 0 10px rgba(0, 0, 255, 0.5); /* Initial shadow */
+      }
+      50% {
+          box-shadow: 0 0 20px rgba(0, 0, 255, 0.7); /* Intermediate shadow */
+      }
+      100% {
+          box-shadow: 0 0 10px rgba(0, 0, 255, 0.5); /* Final shadow */
+      }
+    }
+    
+    /* Apply the animation to an element */
+    .glowing-element {
+      animation: glow-up 2s infinite alternate; /* Apply the animation */
+    }
+    
+    @keyframes rotBGimg {
+      from {
+        transform: rotate(0deg);
+      }
+    
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    .card::after {
+      content: '';
+      position: absolute;
+      background: #07182E;
+      background: #ffff8f;
+    /*    background: #cdfd21;
+      ; */
+      inset: 5px;
+      border-radius: 15px;
+    }  
+    .card:hover:before {
+      background-image: linear-gradient(180deg, rgb(81, 255, 0), purple);
+      animation: rotBGimg 3.5s linear infinite;
+    } 
+    
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 5px;
+    }
+    
+    .above{
+      z-index:2;
+    }
+    
+    @media(max-width:629px)
+    {
+      .card>img {
+        display: none;
+      }
+      
+      .card{
+       
+        /* background: #07182E; */
+        background-color: #ba9d2c;
+        position: relative;
+        display: flex;
+        place-content: center;
+        place-items: center;
+        overflow: hidden;
+        border-radius: 20px;
+        margin-left: 15px;
+        margin-top: 15px;
+        text-align: left;
+        padding: 5px;
+        padding-bottom: 15px;
+        width: 90vw;
+        height: auto;
+        
+    }
+    
+    }
+
+    .card>ul>li::before {
+        content: "\2022"; /* Add a bullet point */
+        color: #000; /* Color of the bullet point */
+        font-size: 15px; /* Size of the bullet point */
+        display: inline-block;
+        width: 1em;
+        position: absolute; /* Position the bullet point */
+        left: -20px; /* Align the bullet point to the left of the list item */
+        top: 50%; /* Vertically center the bullet point */
+        transform: translateY(-50%); /* Adjust vertical alignment */
+    }
+
+
+</style>
+</head>
+<body>
+
+
+
+</body>
+</html>
+
+{% endblock content %}

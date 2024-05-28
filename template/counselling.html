@@ -1,0 +1,394 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Playpen+Sans:wght@300&family=Poppins:wght@500;800&family=Roboto:wght@500&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+        body {
+            background: #FFFDD0;
+            overflow-x: hidden;
+            font-family: poppins;
+        }
+
+        .background .shape {
+            border-radius: 50%;
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            padding: 50px 0px;
+        }
+
+        .form2 {
+            width: 60%;
+            padding: 25px 25px;
+            border: 2px solid black;
+            box-shadow: 2px 2px 24px 24px #ffffffa1;
+            background: antiquewhite;
+            border-radius: 10px;
+            backdrop-filter: blur(30%);
+
+        }
+
+        .form1 {
+            background-color: rgba(255, 255, 255, 0.13);
+            transform: translate(-50%, -50%);
+            border: 2px solid black;
+            border: 10px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+            padding: 50px 35px;
+            width: 45%;
+        }
+
+        .form1 * {
+            font-family: 'Poppins', sans-serif;
+            color: black;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+
+        .form2 h3 {
+            font-size: 5vw;
+            padding: 30px 0px;
+            text-shadow: 1px 1px 1px #080710;
+            font-weight: 500;
+            line-height: 42px;
+            text-align: center;
+            color: wheat;
+        }
+
+        .label1 {
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .input1 {
+            display: block;
+            height: 50px;
+            width: 100%;
+            background-color: rgba(28, 22, 22, 0.07);
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .input1:focus {
+            background-color: #f0ffff;
+            color: #080710;
+        }
+
+        ::placeholder {
+            color: #e5e5e5;
+        }
+
+        .button1 {
+            margin-top: 50px;
+            width: 100%;
+            color: #080710;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form2 label {
+            font-size: larger;
+            font-weight: 700;
+        }
+
+        @media (width<725px) {
+            .form2 h3 {
+                font-size: 7.5vw;
+                padding-left: 0px;
+            }
+
+            .form2 {
+                width: 82%;
+                padding: 25px 25px;
+                border: 2px solid black;
+                box-shadow: 2px 2px 24px 24px white;
+                border-radius: 10px;
+                backdrop-filter: blur(30%);
+
+            }
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 80%;
+            padding: 20px;
+            border-radius: 20px;
+            position: relative;
+            background-color: #1a1a1a;
+            color: #fff;
+            border: 1px solid #333;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-left: 30px;
+            color: #FDDA0D;
+        }
+
+        .title::before {
+            width: 18px;
+            height: 18px;
+        }
+
+        .title::after {
+            width: 18px;
+            height: 18px;
+            animation: pulse 1s linear infinite;
+        }
+
+        .title::before,
+        .title::after {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            left: 0px;
+            background-color: #FFFF8F;
+        }
+
+        .message,
+        .signin {
+            font-size: 14.5px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .signin {
+            text-align: center;
+        }
+
+        .signin a:hover {
+            text-decoration: underline #FFC000;
+        }
+
+        .signin a {
+            color: #FFC000;
+        }
+
+        .flex {
+            display: flex;
+            width: 100%;
+            gap: 6px;
+        }
+
+        .form label {
+            position: relative;
+        }
+
+        .form label .input {
+            background-color: #333;
+            color: #fff;
+            width: 100%;
+            padding: 20px 05px 05px 10px;
+            outline: 0;
+            border: 1px solid rgba(105, 105, 105, 0.397);
+            border-radius: 10px;
+        }
+
+        .form label .input+span {
+            color: rgba(255, 255, 255, 0.5);
+            position: absolute;
+            left: 10px;
+            top: 0px;
+            font-size: 0.9em;
+            cursor: text;
+            transition: 0.3s ease;
+        }
+
+        .form label .input:placeholder-shown+span {
+            top: 12.5px;
+            font-size: 0.9em;
+        }
+
+        .form label .input:focus+span,
+        .form label .input:valid+span {
+            color: #FFDB58;
+            top: 0px;
+            font-size: 0.7em;
+            font-weight: 600;
+        }
+
+        .input {
+            font-size: medium;
+        }
+
+        .submit {
+            border: none;
+            outline: none;
+            padding: 10px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            transform: .3s ease;
+            background-color: #FFDB58;
+        }
+
+        .submit:hover {
+            background-color: #FFFAA0;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(0.9);
+                opacity: 1;
+            }
+
+            to {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+
+
+<body class="main-layout">
+    <!-- loader  -->
+    <div class="loader_bg">
+        <div class="loader"><img src="{% static 'images/loading.gif' %}" alt="#" /></div>
+    </div>
+    <!-- end loader -->
+
+    <section>
+        <form action="counselling" method="POST" class="form">
+            {% csrf_token %}
+            <p class="title">Counseling Form</p>
+            <p class="message">Please fill in the details below for counseling.</p>
+
+            {% if not user.is_authenticated %}
+            <div class="flex">
+                <label>
+                    {{ form.first_name }}
+                    <span>First Name</span>
+                    <span style="color:red;">{{ form.first_name.errors }}</span>
+                </label>
+                
+
+                <label>
+                    {{ form.state }}
+                    <span>State</span>
+                    <span style="color:red;">{{ form.state.errors }}</span>
+                </label>
+            </div>
+            
+            <label>
+                {{ form.phone }}
+                <span>Phone</span>
+                <span style="color:red;">{{ form.phone.errors }}</span>
+            </label>
+            
+            <label>
+                {{ form.email }}
+                <span>Email</span>
+                <span style="color:red;">{{ form.email.errors }}</span>
+            </label>
+            {% else %}
+            <div class="flex" style="display:none;">
+                <label>
+                    {{ form.first_name }}
+                    <span>First Name</span>
+                    <span style="color:red;">{{ form.first_name.errors }}</span>
+                </label>
+                
+                <label>
+                    {{ form.phone }}
+                    <span>Phone</span>
+                    <span style="color:red;">{{ form.phone.errors }}</span>
+                </label>
+                
+                <label>
+                    {{ form.email }}
+                    <span>Email</span>
+                    <span style="color:red;">{{ form.email.errors }}</span>
+                </label>
+            </div>
+            
+            <label>
+                {{ form.state }}
+                <span>State</span>
+                <span style="color:red;">{{ form.state.errors }}</span>
+            </label>
+
+            {% endif %}
+            
+            <label>
+                {{ form.postal_code }}
+                <span>Postal Code</span>
+                <span style="color:red;">{{ form.postal_code.errors }}</span>
+            </label>
+
+            <label>
+                {{ form.local_address }}
+                <span>Local Address</span>
+                <span style="color:red;">{{ form.local_address.errors }}</span>
+            </label>
+
+            <label>
+                {{ form.type }}
+                <span>Type</span>
+                <span style="color:red;">{{ form.type.errors }}</span>
+            </label>
+
+           
+
+            <label>
+                {{ form.date }}
+                <span>Date</span>
+                <span style="color:red;">{{ form.date.errors }}</span>
+            </label>
+
+            <input type="submit" value="Submit" class="submit" style="color: #080710;">
+            
+            {% if not user.is_authenticated %}
+            <p class="signin">Already have an account? <a href="#">Sign in</a></p>
+            {% endif %}
+        </form>
+    </section>
+</body>
+
+</html>
+
+{% endblock %}

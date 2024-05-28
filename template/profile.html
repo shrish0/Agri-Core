@@ -1,0 +1,596 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Playpen+Sans:wght@300&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <title>User Info</title>
+    <style>
+      
+        body {
+            overflow-x: hidden;
+            font-family: poppins,Arial, sans-serif;
+            background-color: #eedc82;
+        }
+        
+        h1 {
+            color: #333;
+            padding: 10px; 
+             font-family: sans-serif; 
+        }
+
+        .box2 p{
+            margin:5px;
+        }
+
+        label , span{
+            font-weight: bold;
+            font-size: 19px;
+            color: rgb(255, 255, 255);
+        }
+ 
+        .bor1
+        {
+            display: flex;
+            justify-content: center;
+            margin: 12px;
+            border-radius: 40px;
+            width: 100%;
+        }
+
+        form h3{
+            color:wheat;
+        }
+
+        button{
+            background-color: transparent;
+            color:dimgrey;            
+        }
+
+        button:hover{
+            background-color: transparent;
+            color:green;
+            transition: all 1 linear ;
+        }
+
+        p{
+            max-width: 300px;
+            color: black;
+        }
+
+        .card-text{
+            color: black;
+            /* border: 4px solid green; */
+            text-align: center;
+            justify-content: center;
+        }
+
+        
+        
+        .futuristic {
+           text-align: center; 
+             font-family: oswald;
+             font-size: 30px;
+             font-weight: 500;
+             text-transform: capitalize;
+             line-height: 1;
+             border-radius: 50px;
+             color: black;
+             width: auto;
+             /* display: inline-block;
+             margin-left: 15em;
+             padding: 30px;
+             border: 3px solid aqua; */
+        }     
+        
+        img{
+            padding: 2px;
+        }
+        
+        a {
+                text-decoration: none; /* Remove underline */
+                cursor: pointer;
+                color: Black; /* Inherit color from parent */
+            }
+
+            h3+p{
+                color:white;
+            }
+            
+            .slide {
+                min-height: 250px;
+                border: 1px solid #ccc;
+                padding: 10px;
+                overflow-x: hidden; /* Enable horizontal scrolling */
+                margin:5px;
+                white-space: nowrap; /* Keep images in the same row */
+                width:200px;
+                border: 2px solid red;
+            }
+            
+            .image-scroll img {
+                max-width: 100px; /* Adjust image width as needed */
+                margin-right: 10px; /* Adjust spacing between images */
+                vertical-align: middle;
+                display: inline-block;
+                animation: scroll-right 5s linear infinite; /* Animation for scrolling */
+            }
+            
+            @keyframes scroll-right {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-100% - 10px)); } /* Move images left */
+            }
+            
+            .sc {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            
+
+            .box1{
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .form-elements{
+                display: flex;
+                flex-wrap: wrap;
+                color: black;
+                background-color: rgb(0, 0, 0);
+                border-radius: 40px;
+                width: 80%;
+                min-width: 350px;
+                text-align: center;
+                justify-content: space-evenly;
+                padding: 14px 0px;
+            }
+
+            .box2{
+                text-align: center; 
+                justify-content: center; 
+            }
+
+            .btn2{
+                color: white;
+                border: 3px solid rgb(255, 255, 255);
+                border-radius: 20px;
+                max-width: 10vw;
+                margin: 1vw 0vw 1vw 10vw;
+            }
+
+            .box3 p{
+            border: 2px solid #e8e8e8;
+            color: black;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #f3a90a;
+            font-size: small;
+            font-weight: bold;
+            text-align: center;
+            margin-right: 10px;
+            }
+            .box3 p:focus {
+            outline-color: white;
+            background-color: #212121;
+            color: #e8e8e8;
+            box-shadow: 5px 5px #888888;
+        }
+
+
+
+        
+.btn4 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background: #ffdf00;
+  font-family: "Montserrat", sans-serif;
+  box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  margin: 0px 8px;
+}
+
+.btn4:after {
+  content: " ";
+  width: 0%;
+  height: 100%;
+  background: #f7d560;
+  position: absolute;
+  transition: all 0.4s ease-in-out;
+  right: 0;
+}
+
+.btn4:hover::after {
+  right: auto;
+  left: 0;
+  width: 100%;
+}
+
+.btn4 span {
+  text-align: center;
+  text-decoration: none;
+  padding: 18px 25px;
+  color: #000000;
+  font-size: 1.3em;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  z-index: 20;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn4:hover span {
+  color: #183153;
+  animation: scaleUp 0.3s ease-in-out;
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.card-text strong{
+    color: #e8e8e8;
+}
+
+button{
+    color: #e8e8e8;
+}
+/*card*/
+.card {
+    width: 300px;
+    height: 440px;
+   background: #07182E; 
+    position: relative;
+    display: flex;
+    place-content: center;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-left: 15px;
+    margin-top: 15px;
+    text-align: left; 
+    padding: 5px;
+    padding-bottom: 15px;
+  }
+
+
+  .card form p {
+    z-index: 2;
+    color: white;
+    font-size: 1.1em;
+    padding-left: 15px;
+  }
+  
+  .card  p {
+    z-index: 2;
+    color: white;
+    font-size: 1.1em;
+    padding-left: 15px;
+  }
+
+  .card form img {
+    min-width: 100%;
+    height: 190px;
+    border-radius: 30px;
+}
+
+
+  .card::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    background-image: linear-gradient(180deg, rgb(0, 183, 255), rgb(255, 48, 255));
+    height: 130%;
+    animation: rotBGimg 3s linear infinite;
+    transition: all 0.2s linear;
+  }
+  
+  /* Define a keyframes animation for the glow effect */
+@keyframes glow-up {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 0, 255, 0.5); /* Initial shadow */
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 0, 255, 0.7); /* Intermediate shadow */
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(0, 0, 255, 0.5); /* Final shadow */
+    }
+}
+
+/* Apply the animation to an element */
+.glowing-element {
+    animation: glow-up 2s infinite alternate; /* Apply the animation */
+    border-radius: 30px;
+}
+
+  @keyframes rotBGimg {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .card::after {
+    content: '';
+    position: absolute;
+    background: #07182E;
+    
+/*    background: #cdfd21;
+    ; */
+    inset: 5px;
+    border-radius: 15px;
+  }  
+  .card:hover:before {
+    background-image: linear-gradient(180deg, rgb(81, 255, 0), purple);
+    animation: rotBGimg 3.5s linear infinite;
+  } 
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.transparent-input {
+    background-color: transparent;
+    border: none; /* Optional: removes border */
+    color: grey;
+    box-shadow: #000000 2px 2px;
+  /* Adjust the color and intensity as needed */
+    padding-left: 15px;
+   width: auto;
+margin-left: 1.5em;
+}
+
+/*card-end*/
+  </style>
+<body>
+    <h2 class="futuristic mt-4 " style="width:auto;background-color:#f3a90a">User Details</h2>
+    <div class="card-container" >
+        <div class="card " style="align-items: flex-start;
+        padding-left: 20px;
+        width: 350px;
+        height: 180px;">
+        
+            <p class="card-text"><strong  >name&nbsp;&nbsp;:</strong>&nbsp;&nbsp;{{user.username}}</p>
+            <p style="margin-bottom:5px;" class="card-text"><strong>Email&nbsp;&nbsp;:&nbsp;&nbsp;</strong>&nbsp;{{user.email}}
+            </p> 
+            <p style="margin-bottom:5px;" class="card-text"><strong>Phone&nbsp;&nbsp;:&nbsp;&nbsp;</strong>&nbsp;{{user.phone}}
+            </p>    
+            <p style="margin-bottom:5px;" class="card-text"><strong>Type&nbsp;&nbsp;:&nbsp;&nbsp;</strong>&nbsp;{{user.usertype}}
+            </p>    
+               
+        </div>
+    </div>
+    <br>
+
+
+
+    <h2 class="futuristic" style="background-color:#f3a90a"> <a href="sell.html"> listed item </a> </h2>
+        <br>
+    <br>
+    <div class="card-container">
+        {% if sell1 %}
+        {% for x in sell1 %}
+        <div class="card mb-5">
+            <form action="{% url 'update_or_delete_product' %}" method="post" style="z-index:1;">
+                {% csrf_token %}
+                <input type="hidden" name="product_id" value="{{ x.id }}">
+                <img src="{{x.img.url}}" alt="" srcset="">
+                <br>
+                <br>
+                <p class="card-text"><strong >Pname&nbsp;&nbsp;:</strong>&nbsp;&nbsp;{{x.productdet}}</p>
+                <p  class="card-text"><strong>Current Price&nbsp;&nbsp;:&nbsp;&nbsp;</strong>₹&nbsp;{{x.price}}
+                    <br>
+                </p>&nbsp;&nbsp;&nbsp;
+                <div class="box1">
+                    <label for="delete_product_{{ x.id }}" >Delete Product</label>&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" name="delete_product" id="delete_product_{{ x.id }}" onclick="deleteAlert()">
+                    <br>
+                <label for="new_product_price_{{ x.id }}" >New Product Price:
+                </label>
+                <input type="number" r name="new_product_price" id="new_product_price_{{ x.id }}" placeholder="new price" >
+                <div class="glowing-element">
+                    <button type="submit" class="btn" onclick="showAlert()"><strong>
+                        UPDATE
+                        
+                    </strong></button>
+                </div>
+                </div>
+
+                <script>
+                    function deleteAlert() {
+                        alert("You are going to delete the product.");
+                    } 
+                   
+                    function showAlert() {
+                        alert("Please review your changes before updating the product.");
+                    } 
+                
+                </script>
+            </form>
+        </div>
+        {% endfor %}
+        
+        {% else %}
+
+             <div>
+                <h2 class="futuristic mb-5" style="background-color:#f3a90a"> <a href="sell.html"> No product </a></h2>
+             </div>
+
+        {% endif %}
+        
+    </div>
+
+
+
+    <h2 class="futuristic" style="background-color:#f3a90a">
+        <a href="counselling.html" >Slot Booked </a>
+    </h2>
+    
+    <div class="card-container mt-5">
+        {% if counsel %}
+        {% for x in counsel %}
+        <div class="card mb-5" style="height: auto;">
+            <form action="{% url 'delete_slot' %}" method="post" style="z-index:1;">
+                {% csrf_token %}
+                <input type="hidden" name="product_id" value="{{ x.id }}">
+                <h4 class="futuristic" style="color:wheat;background-color:dimgray">{{x.type}}</h4>
+                <br>
+                <h3>Address</h3>
+                <p><strong>Postal code&nbsp;&nbsp;:</strong>&nbsp;&nbsp;{{x.postal_code}}</p>
+                <p>
+                    <strong>Local address&nbsp;&nbsp;:</strong>&nbsp;&nbsp;{{x.local_address}}
+                </p>
+                <p ><strong>State&nbsp;&nbsp;:&nbsp;&nbsp;</strong>{{x.state}}
+                </p>&nbsp;&nbsp;&nbsp;
+                <h3>Date</h3>
+                <p>{{x.date}}
+                </p>&nbsp;&nbsp;&nbsp;
+                <h3>Contact</h3>
+                <p><strong>Phone no:&nbsp;&nbsp;:&nbsp;&nbsp;</strong>{{x.phone}}
+                <p><strong>email:&nbsp;&nbsp;:&nbsp;&nbsp;</strong>{{x.email}}
+                </p>
+                <br>
+                <button type="submit" class="btn futuristic" style="position: relative;
+                left: 26%;
+                font-size:1em;
+                background-color:wheat;" onclick="deleteSlot()"><strong>
+                    Delete
+                </strong>
+            </button>
+        </div>
+                <script>
+                    function deleteSlot() {
+                        alert("You are going to delete the slot.");
+                    } 
+                
+                </script>
+            </form>
+            {% endfor %}
+        
+        {% else %}
+
+             <div>
+                <h2 class="futuristic mb-5"> <a href="/counselling.html" > No slot booked</a></h2>
+             </div>
+
+        {% endif %}
+    </div>
+        <br>
+        <h2 class="futuristic mb-5" style="background-color:#f3a90a">List of Registered Farms</h2>
+
+        <div class="sc">
+            <ul class="farm-list card-container">
+                {% for site_with_image in sites_with_images %}
+                    <li class="farm-item">
+                        <div class="slide">
+                            <form action="delete_farm" method="post">
+                                {% csrf_token %}
+
+                                <input type="hidden" name="farm_id" value="{{ site_with_image.site.id }}">
+                            <h3>Location: {{ site_with_image.site.location }}</h3>
+                            <h4>Name: <strong>{{ site_with_image.site.name }}</strong></h4>
+                            <p>Description: {{ site_with_image.site.description }}</p>
+                            <div class="image-scroll">
+                                {% for image in site_with_image.images %}
+                                    <img src="{{ image.image.url }}" alt="Farm Image">
+                                {% endfor %}
+                                <div class="mt-2">
+                                    <button type="submit" class="btn futuristic" style="position: relative;
+                                left: 26%;
+                                font-size:1em;" onclick="deleteSlot()"><strong>
+                                    Delete
+                                </strong>
+                            </button>
+                        </div>
+                                <script>
+                                    function deleteFarm() {
+                                        alert("You are going to delete the farm.");
+                                    } 
+                                
+                                </script>
+                            </form>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% if not sites_with_images %}
+                <div style="width: 60%; min-width:350px">
+                    <h1 class="futuristic mb-4" style="font-size: 2em; background-color: #f7d560">Create Agricultural Site</h1>
+                </div>
+                <form method="post" action="create_agricultural_site" enctype="multipart/form-data" class="form-elements">
+                    {% csrf_token %}
+
+                    <div class="box2">
+                        {{ form.as_p }}
+                    </div>
+
+                    <div id="formset" class="box2 box3">
+                        <h2 style="color: white;">Upload Images</h2>
+
+                        {{ image_formset.management_form }}
+                        {% for form in image_formset %}
+                            {{ form.as_p }}
+                        {% endfor %}
+                        <button type="submit" class="btn4" >
+                            <span>
+                              submit
+                            </span> </button>
+                    </div>
+                </form>
+            {% endif %}
+            
+            <!-- <button id="addFarmButton" class="futuristic mt-5 mb-5 btn4" >Add New Farm</button> -->
+            <button id="addFarmButton" class="btn4 mt-4 mb-4">
+                <span>Add New Farm</span>
+            </button>
+
+        </div>
+
+    <script>
+        // JavaScript code to handle the click event of the "Add New Farm" button
+        document.getElementById("addFarmButton").addEventListener("click", function() {
+            // Redirect to the page where you can add a new farm
+            window.location.href = "{% url 'create_agricultural_site' %}";
+        });
+
+        window.onload = function() {
+            // Check if the alert message exists in the page's context
+            var errorMessage = "{% for message in messages %}{{ message }}{% endfor %}"; // Assuming messages is passed from the Django context
+        
+            // If the error message exists and is not empty, display it in an alert box
+            if (errorMessage && errorMessage.trim() !== "") {
+                alert(errorMessage);
+            }
+        }
+    </script>
+        
+
+{%endblock content%}

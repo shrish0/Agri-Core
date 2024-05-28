@@ -1,0 +1,259 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <title>Shrishti</title>
+
+    <style>
+        .container1 {
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+        }
+
+        .card {
+            position: relative;
+            display: flex;
+            width: 100%;
+            /* Adjust as needed */
+            background-color: #242824;
+            padding: 60px;
+            /* Increase padding for extra height */
+            border-radius: 6px;
+            gap: 0.5rem;
+            height: max-content;
+            margin-bottom: 2vh;
+            align-items: stretch;
+            /* Make all items stretch to match height */
+        }
+
+        .bar {
+            width: 10px;
+            border-radius: 5px;
+            background-color: #9147ff;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .card:hover .bar {
+            margin-right: 5px;
+        }
+
+        .card_content {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .card_form {
+            position: relative;
+            min-width: 5em;
+            min-height: 5em;
+            border-radius: 4px;
+            overflow: hidden;
+            width: 30%;
+            /* Adjust the width as needed */
+            float: left;
+            /* Align images to the left */
+            margin-right: 10px;
+        }
+
+        .card_image {
+            width: 100%;
+            /* Make sure images take 100% width of their container */
+            height: auto;
+            /* Maintain the aspect ratio */
+            max-height: 40%;
+            /* Adjust the maximum height as needed */
+            object-fit: cover;
+            /* Preserve aspect ratio and cover the entire box */
+        }
+
+        .card_data {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            width: 70%;
+        }
+
+        .card_data span {
+            color: #ff4747;
+            margin-top: auto;
+            font-size: 0.9em;
+            transition: 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .card_data span:hover {
+            color: #28aea5;
+            text-decoration: underline;
+        }
+
+        .text {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            margin-left: 0.5em;
+            color: white;
+        }
+
+        .text_m {
+            font-size: 1.5em;
+            /* Adjust font size for a taller card */
+        }
+
+        .text_s {
+            color: #FDFF00;
+            font-size: 1em;
+        }
+
+        .text_d {
+            font-size: 1em;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+        }
+
+        .cube {
+            width: max-content;
+            height: 10px;
+            transition: all 0.2s;
+            transform-style: preserve-3d;
+        }
+
+        .card:hover .cube {
+            transform: rotateX(90deg);
+        }
+
+        .side {
+            width: max-content;
+            height: 1em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: bold;
+        }
+
+        .top {
+            transform: rotateX(-90deg) translate3d(0, 0, 0em);
+        }
+
+        .front {
+            transform: translate3d(0, 0, 1em);
+        }
+
+        .read-more-link {
+        display: inline-block;
+        padding: 8px 12px;
+        background-color: #FFFFCC;
+        color: #000000;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s ease-in-out;
+        max-width: 150px; /* Adjust the max-width as needed */
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .read-more-link:hover {
+        background-color: #FFFD74;
+    }
+    </style>
+
+
+
+
+
+
+</head>
+<!-- body -->
+
+<body class="main-layout">
+    <div class="container1">
+        <h1>Daily Agricultural News</h1>
+
+        <div id="news-container">
+            <!-- Articles will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+        // Your API key
+        const apiKey = "64fb2d90928077d2c6f1b0a2aa1b217a";
+
+        // API endpoint
+        const apiUrl = `https://gnews.io/api/v4/search?q=agriculture OR "advancements in agriculture" OR "agricultural news" OR "new technologies in agriculture"&lang=en&img=1&apikey=${apiKey}`;
+
+        // Function to fetch and display news
+        async function fetchNews() {
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                // Check if the request was successful
+                if (response.ok) {
+                    displayNews(data.articles);
+                } else {
+                    throw new Error(`Error: ${data.message}`);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        // Function to display news articles
+        function displayNews(articles) {
+            const newsContainer = document.getElementById('news-container');
+
+            articles.forEach(article => {
+                const articleElement = document.createElement('div');
+                articleElement.classList.add('card');
+                articleElement.innerHTML = `
+                    <div class="bar"></div>
+                    <div class="card_content">
+                        <div class="card_form">
+                            <img src="${article.image}" alt="${article.title}" class="card_image">
+                        </div>
+                        <div class="card_data">
+                            <div class="data">
+                                <div class="text">
+                                    <label class="text_m">${article.title}</label>
+                                    <div class="cube text_s">
+                                        <label class="side front">${article.source.name}</label>
+                                        <label class="side top">${article.author}</label>
+                                    </div>
+                                    <label class="text_d">${article.description}</label>
+                                    <a href="${article.url}" title="Read more" target="_blank" class="read-more-link">Read more</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                newsContainer.appendChild(articleElement);
+            });
+        }
+
+        // Fetch news when the page loads
+        window.onload = fetchNews;
+    </script>
+</body>
+
+
+{% endblock content %}

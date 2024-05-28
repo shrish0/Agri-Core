@@ -1,0 +1,160 @@
+{% extends '_base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Plant Disease Detection - Upload Image</title>
+    <style>
+        body {
+            overflow-x: hidden;
+            font-family: poppins,Arial, sans-serif;
+            background-color: #eedc82;
+        }
+        .upload {
+            width: 100%;
+            height: auto;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 5%;
+        }
+
+        .form {
+            height: 200px;
+            width: 60%;
+            margin: auto;
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button {
+            height: auto;
+            background: transparent;
+            padding: 0;
+            border: none;
+            cursor: pointer;
+            --border-right: 6px;
+            --text-stroke-color: rgba(0, 0, 0, 0.6);
+            --animation-color: #37FF8B;
+            --fs-size: 2em;
+            letter-spacing: 3px;
+            text-decoration: none;
+            font-size: var(--fs-size);
+            font-family: "Sans-serif";
+            position: relative;
+            text-transform: uppercase;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--text-stroke-color);
+        }
+
+        .hover-text {
+            position: absolute;
+            box-sizing: border-box;
+            content: attr(data-text);
+            color: var(--animation-color);
+            width: 0%;
+            inset: 0;
+            border-right: var(--border-right) solid var(--animation-color);
+            overflow: hidden;
+            transition: 0.5s;
+            -webkit-text-stroke: 1px var(--animation-color);
+        }
+
+        .button:hover .hover-text {
+            width: 100%;
+            filter: drop-shadow(0 0 23px var(--animation-color))
+        }
+
+        .input {
+            border: 2px solid #e8e8e8;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #212121;
+            font-size: small;
+            font-weight: bold;
+            text-align: center;
+            margin-right: 10px;
+        }
+
+        .input:focus {
+            outline-color: white;
+            background-color: #212121;
+            color: #e8e8e8;
+            box-shadow: 5px 5px #888888;
+        }
+
+        .preview-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px; /* Adjust as needed */
+            max-height: 300px;
+            overflow: auto; /* Ensure the container has a fixed height */
+        }
+        
+        .msg{
+            text-align: center;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <!-- Inside your plant-disease-detection.html template -->
+    
+    <div class="upload">
+        
+        <div class="container">
+            <h1  style="background-color: #f3a90a;
+            border-radius: 50px;">Upload Plant Image</h1>
+        </div>
+        
+        <!-- <h1 class="h1">Upload Plant Image</h1> -->
+        <form class="form" method="post" enctype="multipart/form-data" action="{% url 'disease_prediction' %}">
+            {% csrf_token %}
+            <!-- 
+                <input class="image" type="file" name="image" accept="image/*" required> -->
+                <input class="input" id="imageInput" type="file" name="image" accept="image/*" required onchange="previewImage(event)">
+                
+                <!-- <button class="btn" type="submit">Upload</button> -->
+                <button class="button" data-text="Awesome">
+                    <span class="actual-text">&nbsp;UPLOAD&nbsp;</span>
+                    <span aria-hidden="true" class="hover-text">&nbsp;UPLOAD&nbsp;</span>
+                </button>
+            </form>
+            
+          <!-- Inside your plant-disease-detection.html template -->
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-danger msg" role="alert">
+        {{ message }}
+    </div>
+{% endfor %}
+{% endif %}
+
+        <!-- Display uploaded image -->
+        <div class="preview-container ">
+            <img id="imagePreview" src="#" alt="Uploaded Image" style="display: none; max-width: 100%; max-height: 200px;" class="mb-5">
+        </div>
+
+        <script>
+            function previewImage(event) {
+                var reader = new FileReader();
+                reader.onload = function() {
+                    var output = document.getElementById('imagePreview');
+                    output.src = reader.result;
+                    output.style.display = 'block';
+                }
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        </script>
+    </div>
+</body>
+
+</html>
+{% endblock content%}
