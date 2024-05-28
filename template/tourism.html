@@ -1,0 +1,253 @@
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agri - Tourism</title>
+    <style>
+        .tourism
+        {
+            color :gold;
+        }
+
+        .card {
+            width: 300px;
+            height: 440px;
+           /* background: #07182E; */
+           background-color: #0a0803;
+            position: relative;
+            display: flex;
+            place-content: center;
+            place-items: center;
+            overflow: hidden;
+            border-radius: 15px;
+            margin-left: 15px;
+            margin-top: 15px;
+            text-align: left; 
+            padding: 5px;
+            padding-bottom: 15px;
+          }
+          
+          .dleft
+          {
+            width: 269px;
+            min-width: 150px;
+            max-height: 155px;
+            overflow: auto;
+          }
+
+          .chat{
+            background-color: transparent;
+            color: aliceblue;
+            position: absolute;
+            right: 10px;
+          }
+          .card form p {
+            z-index: 2;
+            color: dimgray;
+            font-size: 1.1em;
+            padding-left: 15px;
+          }
+
+          .card strong{
+            z-index:5;
+          }
+          
+          .card  p {
+            z-index: 2;
+            color: dimgray;
+            font-size: 1.1em;
+            padding-left: 15px;
+          }
+
+          .card form img {
+            min-width: 100%;
+            height: 200px;
+            z-index: 1;
+            border-radius: 25px;
+        }
+
+
+          .card::before {
+            content: '';
+            position: absolute;
+            width: 100px;
+            background-image: linear-gradient(180deg, rgb(0, 183, 255), rgb(255, 48, 255));
+            height: 130%;
+            animation: rotBGimg 3s linear infinite;
+            transition: all 0.2s linear;
+          }
+          
+          /* Define a keyframes animation for the glow effect */
+        @keyframes glow-up {
+            0% {
+                box-shadow: 0 0 10px rgba(0, 0, 255, 0.5); /* Initial shadow */
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(0, 0, 255, 0.7); /* Intermediate shadow */
+            }
+            100% {
+                box-shadow: 0 0 10px rgba(0, 0, 255, 0.5); /* Final shadow */
+            }
+        }
+
+        /* Apply the animation to an element */
+        .glowing-element {
+            animation: glow-up 2s infinite alternate; /* Apply the animation */
+            border-radius: 30px;
+        }
+
+          @keyframes rotBGimg {
+            from {
+              transform: rotate(0deg);
+            }
+          
+            to {
+              transform: rotate(360deg);
+            }
+          }
+          
+          .card::after {
+            content: '';
+            position: absolute;
+            background: #07182E;
+           
+         /*   background: #ffff8f;
+            background: #cdfd21; */
+            inset: 5px;
+            border-radius: 15px;
+          }  
+          .card:hover:before {
+            background-image: linear-gradient(180deg, rgb(81, 255, 0), purple);
+            animation: rotBGimg 3.5s linear infinite;
+          } 
+          
+          .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .transparent-input {
+            background-color: transparent;
+            border: none; /* Optional: removes border */
+            color: grey;
+            box-shadow: #000000 2px 2px;
+          /* Adjust the color and intensity as needed */
+            padding-left: 15px;
+           width: auto;
+        margin-left: 1.5em;
+        }
+    
+        .prev{
+            background: transparent;
+            
+        }
+
+        .prev img{
+            background:white;
+        }
+        .chat img{
+            background:white;
+        }
+
+        .next{
+            background: transparent;
+        }
+        
+        .next img{
+            background:white;
+        }
+        .slider
+        {
+            overflow: hidden;
+            z-index: 2;
+            margin: 9px 0px;
+            border-radius: 18px;
+        }
+
+        .slider img
+        {
+            margin: 2px 0px;
+            width: 300px;
+            height: 200px;
+        }
+
+        .card span{
+            z-index: 3;
+            color:aliceblue;
+            
+        }
+    </style>
+</head>
+<body class="main-layout">
+    <h1 class="futuristic animate-character" >
+        Agri Tourism :- 
+    </h1>
+    <h4 class="ml-4" style="font-size:18px;">Let live the life with nature touch.</h4>
+    
+    <div class="card-container mb-4">
+        {% for farm in sites_with_images %}
+        <div class="card" >
+            <div class="slider">
+                {% for image in farm.images %}
+                <img src="{{ image.image.url }}" alt="Farm Image">
+                {% endfor %}
+            </div>
+            
+            <span style="z-index:4;">
+                <button class="prev"><img 
+                    src="{% static 'svg-d\arrow-left-circle-fill.svg' %}" alt="right" srcset=""></button>
+                    <button class="next"><img src="{% static 'svg-d\arrow-right-circle-fill.svg' %}" alt="right" srcset=""></button>
+                    <a href="http://{{DJANGO_SERVER_IP}}/bookfarm/{{farm.site.id}}">
+                    <button class="chat"> chat <img src="{% static 'svg-d\send-arrow-up-fill.svg' %}" alt="right" srcset=""></button>
+                </a>
+                </span>
+                <strong>Location:</strong>
+                <span class="dleft" >
+                    {{ farm.site.location }}</span>
+                <strong>Description:</strong>
+                <span class="dleft" >
+                    {{ farm.site.description }}</span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        // JavaScript code for image slider
+        var cards = document.querySelectorAll('.card');
+        cards.forEach(function(card) {
+            var slider = card.querySelector('.slider');
+            var images = slider.querySelectorAll('img');
+            var index = 0;
+
+            function showImage(n) {
+                if (n >= images.length) { index = 0; }
+                if (n < 0) { index = images.length - 1; }
+                images.forEach(function(image) {
+                    image.style.display = 'none';
+                });
+                images[index].style.display = 'block';
+            }
+
+            function nextImage() {
+                showImage(++index);
+            }
+
+            function prevImage() {
+                showImage(--index);
+            }
+
+            showImage(index);
+
+            // Add event listeners for navigation buttons
+            card.querySelector('.prev').addEventListener('click', prevImage);
+            card.querySelector('.next').addEventListener('click', nextImage);
+        });
+    </script>
+</body>
+</html>
+{% endblock %}

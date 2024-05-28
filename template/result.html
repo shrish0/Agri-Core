@@ -1,0 +1,99 @@
+{% extends '_base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        p {
+            font-size: 1.1rem;
+        }
+
+        .heading {
+            display: flex;
+            padding: 30px;
+            text-shadow: 1px 1px 1px #080710;
+            font-weight: 500;
+            line-height: 42px;
+            color: wheat;
+            font-size: 1.9rem;
+        }
+
+        .heading>a {
+            text-decoration: none;
+            color: wheat;
+        }
+
+        .heading1 {
+            color: rgb(0, 0, 0);
+            font-size: 2em;
+            font-family: sans-serif;
+            margin: 0vw 0vw 0vw 26vw;
+        }
+
+        .heading2 {
+            color: pink;
+        }
+
+        .heading2 a {
+            font-size: 23px;
+            color: #1DA1F2;
+        }
+
+        section {
+            margin: 20px;
+        }
+
+        .item {
+            font-size: 21px;
+            font-family: sans-serif;
+            padding: 25px 25px;
+            border: 2px solid black;
+            background-color: #FFFFE0;
+            box-shadow: 2px 2px 24px 24px white;
+            border-radius: 20px;
+            backdrop-filter: blur(30%);
+            margin: 30px 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <!-- {{result1}} -->
+        {%for x in result %}
+        <h2 class="heading">
+            <span style="justify-content:start;width:90%;" class="heading1">&nbsp;&nbsp;&nbsp;&nbsp; {{ x.name2}}</span>
+            <span style="justify-content:flex-end;width:10%;" class="heading2"> <a
+                    href="plant-disease-detection.html">Back</a></span>
+        </h2>
+
+        <div class="cont">
+            <li></li>
+            <!-- <p>{{ result1 }}</p> -->
+            <div class="item">
+                <h3>Cause</h3>{{ x.cause }}
+            </div>
+            <div class="item">
+                <h3>Symptoms</h3>{{ x.symptoms }}
+            </div>
+            <div class="item">
+                <h3>Life Cycle</h3>{{ x.life_cycle }}
+            </div>
+            <div class="item">
+                <h3>Prevention and Control</h3>{{ x.prevention_and_control }}
+            </div>
+        {%endfor%}
+        </div>
+    </section>
+</body>
+
+</html>
+{% endblock content %}

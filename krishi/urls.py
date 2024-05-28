@@ -1,0 +1,36 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+        path("", views.home ,name='home'),
+        path("try",views.predict_crop,name="product"),
+        path("products.html",views.product,name="product"),
+        path("policy.html",views.policy_list,name="policy"),
+        path("about.html",views.about,name="about"),
+        path("profile.html",views.profile,name="profile"),
+        path("blog.html",views.blog,name="blog"),
+        path("counselling.html",views.counsell,name="counsell"),
+        path("counselling",views.counsell,name="counsell"),
+        path("index.html",views.index,name="index"),
+        path("feedback1",views.feedback1,name="feedback1"),
+        path("news",views.news,name="news"),
+        path("sell.html",views.sell,name="sell"),
+        path("sell",views.sell,name="sell"),
+        path("show/index.html",views.index,name="index"),
+        path("show/about.html",views.about1,name="about"),
+        path("show/<str:id>",views.show,name="show"),
+        path("show/<str:id>",views.show,name="show"),
+        path('plant-disease-detection.html', views.disease_prediction_view, name='disease_prediction'),
+        path("daily_news.html",views.daily_news,name="daily_news"),
+        path("weather.html",views.weather,name="weather.html"),
+        path('update_or_delete_product/', views.update_or_delete_product, name='update_or_delete_product'),
+        path('delete_slot/', views.delete_slot, name='delete_slot'),
+        path('delete_farm', views.delete_farm, name='delete_farm'),
+        path('create_agricultural_site/', views.create_agricultural_site, name='create_agricultural_site'),
+        path('create_agricultural_site', views.create_agricultural_site, name='create_agricultural_site'),
+        path('<str:id>/search_results', views.search_results, name='search_results'),
+        path('weatherapp.html', views.weather_finder, name='weather_finder'),
+        path("FaQ.html",views.FaQs,name="FaQ"),
+        path("tourism",views.tourism,name="Tourism"),
+]
+

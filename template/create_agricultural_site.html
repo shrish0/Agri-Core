@@ -1,0 +1,408 @@
+
+{% extends '_base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Playpen+Sans:wght@300&family=Poppins:wght@500;800&family=Roboto:wght@500&display=swap"
+        rel="stylesheet">
+    <<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Agbalumo&family=Playpen+Sans:wght@300&family=Poppins:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: #FFFDD0;
+            overflow-x: hidden;
+            font-family: poppins;
+           
+        }
+
+        .box3 p{
+            border: 2px solid #e8e8e8;
+            color: black;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #F4BB44;
+            font-size: small;
+            font-weight: bold;
+            text-align: center;
+            margin-right: 10px;
+            }
+        
+       .box3 p:focus {
+            outline-color: white;
+            background-color: #212121;
+            color: #e8e8e8;
+            box-shadow: 5px 5px #888888;
+        }
+
+        .btn4 {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            background: #ffdf00;
+            font-family: "Montserrat", sans-serif;
+            box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+            margin: 0px 8px;
+        }
+
+        .btn4 span {
+            text-align: center;
+            text-decoration: none;
+            padding: 18px 25px;
+            color: #000000;
+            font-size: 1.3em;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            z-index: 20;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn4:hover span {
+            color: #183153;
+            animation: scaleUp 0.3s ease-in-out;
+        }
+
+        label, span {
+            font-weight: bold;
+            font-size: 19px;
+            color: rgb(255, 255, 255);
+        }
+
+
+
+        .background .shape {
+            border-radius: 50%;
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            padding: 50px 0px;
+        }
+
+      
+        .form-elements{
+            display: flex;
+            flex-wrap: wrap;
+            color: black;
+            background-color: rgb(0, 0, 0);
+            border-radius: 40px;
+            width: 80%;
+            min-width: 350px;
+            text-align: center;
+            justify-content: space-evenly;
+            padding: 14px 0px;
+            max-width: 900px;
+
+        }
+
+        
+
+        .form1 * {
+            font-family: 'Poppins', sans-serif;
+            color: black;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+
+        .form2 h3 {
+            font-size: 5vw;
+            padding: 30px 0px;
+            text-shadow: 1px 1px 1px #080710;
+            font-weight: 500;
+            line-height: 42px;
+            text-align: center;
+            color: wheat;
+        }
+
+        .label1 {
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        #formset p {
+            margin-top: 10px;
+        }
+
+        .input1 {
+            display: block;
+            height: 50px;
+            width: 100%;
+            background-color: rgba(28, 22, 22, 0.07);
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .input1:focus {
+            background-color: #f0ffff;
+            color: #080710;
+        }
+
+        ::placeholder {
+            color: #e5e5e5;
+        }
+
+        .button1 {
+            margin-top: 50px;
+            width: 100%;
+            color: #080710;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form2 label {
+            font-size: larger;
+            font-weight: 700;
+        }
+
+        @media (width<725px) {
+            .form2 h3 {
+                font-size: 7.5vw;
+                padding-left: 0px;
+            }
+
+            .form2 {
+                width: 82%;
+                padding: 25px 25px;
+                border: 2px solid black;
+                box-shadow: 2px 2px 24px 24px white;
+                border-radius: 10px;
+                backdrop-filter: blur(30%);
+
+            }
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 80%;
+            padding: 20px;
+            border-radius: 20px;
+            position: relative;
+            background-color: #1a1a1a;
+            color: #fff;
+            border: 1px solid #333;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: -1px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-left: 30px;
+            color: #FDDA0D;
+        }
+
+        .title::before {
+            width: 18px;
+            height: 18px;
+        }
+
+        .title::after {
+            width: 18px;
+            height: 18px;
+            animation: pulse 1s linear infinite;
+        }
+
+        .title::before,
+        .title::after {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            left: 0px;
+            background-color: #FFFF8F;
+        }
+
+        .message,
+        .signin {
+            font-size: 14.5px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .signin {
+            text-align: center;
+        }
+
+        .signin a:hover {
+            text-decoration: underline #FFC000;
+        }
+
+        .signin a {
+            color: #FFC000;
+        }
+
+        .flex {
+            display: flex;
+            width: 100%;
+            gap: 6px;
+        }
+
+        .form label {
+            position: relative;
+        }
+
+        .form label .input {
+            background-color: #333;
+            color: #fff;
+            width: 100%;
+            padding: 20px 05px 05px 10px;
+            outline: 0;
+            border: 1px solid rgba(105, 105, 105, 0.397);
+            border-radius: 10px;
+        }
+
+        .form label .input+span {
+            color: rgba(255, 255, 255, 0.5);
+            position: absolute;
+            left: 10px;
+            top: 0px;
+            font-size: 0.9em;
+            cursor: text;
+            transition: 0.3s ease;
+        }
+
+        .form label .input:placeholder-shown+span {
+            top: 12.5px;
+            font-size: 0.9em;
+        }
+
+        .form label .input:focus+span,
+        .form label .input:valid+span {
+            color: #FFDB58;
+            top: 0px;
+            font-size: 0.7em;
+            font-weight: 600;
+        }
+
+        .input {
+            font-size: medium;
+        }
+
+        .submit {
+            border: none;
+            outline: none;
+            padding: 10px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            transform: .3s ease;
+            background-color: #FFDB58;
+        }
+
+        .submit:hover {
+            background-color: #FFFAA0;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: scale(0.9);
+                opacity: 1;
+            }
+
+            to {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+        .form-container{
+            display: flex;
+            justify-content: center; /* Center content horizontally */
+            padding: 50px 0px;
+        }
+        
+        #formset p label{
+            display:none;
+        }
+
+       .form-control
+       {
+        background-color: transparent;
+       }
+
+
+    </style>
+</head>
+
+
+
+<body >
+    <!-- loader  -->
+    <div class="loader_bg">
+        <div class="loader"><img src="{% static 'images/loading.gif' %}" alt="#" /></div>
+    </div>
+    <!-- end loader -->
+    <h1 class="futuristic animate-character mt-3 ml-3" >
+        Farm Verification
+    </h1>
+    
+    <div class="form-container " style="width: auto;">
+        
+        <form method="post" enctype="multipart/form-data" class="form-elements">
+            <div class="box2">
+                {% csrf_token %}
+                {{ form.as_p }}
+            </div>
+
+            <div id="formset" class="box2 box3">
+                <h2 style="color: white;">Upload Images</h2>
+
+                {{ image_formset.management_form }}
+                {% for form in image_formset %}
+                    {{ form.as_p }}
+                {% endfor %}
+                <button type="submit" class="btn4 mt-4" >
+                    <span>
+                      submit
+                    </span> </button>
+            </div>
+
+        </form>
+        
+    </div>
+
+  
+</body>
+
+</html>
+
+{% endblock %}
